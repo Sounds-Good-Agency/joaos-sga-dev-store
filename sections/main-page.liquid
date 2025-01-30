@@ -21,6 +21,21 @@
   <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     {{ page.content }}
   </div>
+  {% if page.metafields.custom.metaobject_page %}
+    {% assign obj = page.metafields.custom.metaobject_page.value %}
+    <div>
+      <p>Has page.metafields.custom.metaobject_page! going deeper</p>
+        {% if obj.location %}
+          <p>has location! location: {{ obj.location }}</p>
+        {% endif %}
+        {% if obj.name %}
+          <p>has name! name: {{ obj.name }}</p>
+        {% endif %}
+       {% if obj.description %}
+          <p>has description! description: {{ obj.description }}</p>
+        {% endif %}
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
