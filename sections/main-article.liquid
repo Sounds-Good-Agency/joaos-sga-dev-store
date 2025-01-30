@@ -1,6 +1,21 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template">
+    {% if article.metafields.custom.metaobject_reference %}
+    {% assign obj = article.metafields.custom.metaobject_reference.value %}
+    <div>
+      <p>Has article.metafields.custom.metaobject_reference! going deeper</p>
+        {% if obj.location %}
+          <p>has location! location: {{ obj.location }}</p>
+        {% endif %}
+        {% if obj.name %}
+          <p>has name! name: {{ obj.name }}</p>
+        {% endif %}
+       {% if obj.description %}
+          <p>has description! description: {{ obj.description }}</p>
+        {% endif %}
+    </div>
+  {% endif %}
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
