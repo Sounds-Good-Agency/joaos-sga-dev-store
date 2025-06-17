@@ -35,12 +35,14 @@
           "type": "_product-details",
           "static": true,
           "settings": {
-            "gap": 28,
-            "sticky_details_desktop": true,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "background_media": "none",
@@ -60,6 +62,7 @@
               "type": "group",
               "name": "Header",
               "settings": {
+                "link": "",
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -129,6 +132,12 @@
                     "type_preset": "paragraph",
                     "width": "100%",
                     "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
                     "padding-block-start": 4,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -212,6 +221,7 @@
               "type": "group",
               "name": "Policies",
               "settings": {
+                "link": "",
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -250,6 +260,7 @@
                   "type": "group",
                   "name": "Shipping policy",
                   "settings": {
+                    "link": "",
                     "open_in_new_tab": false,
                     "content_direction": "row",
                     "vertical_on_mobile": false,
@@ -290,6 +301,7 @@
                       "settings": {
                         "icon": "truck",
                         "width": 16,
+                        "link": "",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
@@ -330,6 +342,7 @@
                   "type": "group",
                   "name": "Return policy",
                   "settings": {
+                    "link": "",
                     "open_in_new_tab": false,
                     "content_direction": "row",
                     "vertical_on_mobile": false,
@@ -370,6 +383,7 @@
                       "settings": {
                         "icon": "return",
                         "width": 16,
+                        "link": "",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
@@ -461,6 +475,83 @@
         "padding-block-end": 0
       }
     },
+    "section_7Q8W7P": {
+      "type": "section",
+      "blocks": {
+        "buy_buttons_kiLnGX": {
+          "type": "buy-buttons",
+          "name": "really too much Buy buttons",
+          "settings": {
+            "product": "{{ closest.product }}",
+            "stacking": false,
+            "show_pickup_availability": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "quantity": {
+              "type": "quantity",
+              "static": true,
+              "settings": {
+                "product": "{{ closest.product }}"
+              },
+              "blocks": {}
+            },
+            "add-to-cart": {
+              "type": "add-to-cart",
+              "static": true,
+              "settings": {
+                "product": "{{ closest.product }}",
+                "style_class": "button-secondary"
+              },
+              "blocks": {}
+            },
+            "accelerated-checkout": {
+              "type": "accelerated-checkout",
+              "static": true,
+              "settings": {
+                "product": "{{ closest.product }}"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "buy_buttons_kiLnGX"
+      ],
+      "name": "Really too much section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -529,6 +620,7 @@
             "group_zGryyP": {
               "type": "group",
               "settings": {
+                "link": "",
                 "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
@@ -599,6 +691,12 @@
                     "type_preset": "h6",
                     "width": "100%",
                     "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -660,6 +758,7 @@
   },
   "order": [
     "main",
+    "section_7Q8W7P",
     "product_recommendations_qggXJq"
   ]
 }
