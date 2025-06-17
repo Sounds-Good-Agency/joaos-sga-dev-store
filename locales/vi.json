@@ -18,13 +18,11 @@
       "error_heading": "Vui lòng điều chỉnh các mục sau:"
     },
     "unit_price": {
-      "per_item": {
-        "single": "{{price}} mỗi mặt hàng",
+      "per_item_html": {
         "one": "{{price}} mỗi {{count}} mặt hàng",
         "other": "{{price}} mỗi {{count}} mặt hàng"
       },
-      "per_unit": {
-        "single": "{{price}}\/{{unit}}",
+      "per_unit_html": {
         "one": "{{price}}\/{{count}} {{unit}}",
         "other": "{{price}}\/{{count}} {{unit}}"
       },
@@ -56,7 +54,11 @@
         "yd": "yd",
         "ft2": "ft²",
         "item": "mặt hàng"
-      }
+      },
+      "per_item_single_html": "{{price}} mỗi mặt hàng",
+      "per_unit_single_html": "{{price}}\/{{unit}}",
+      "per_item": {},
+      "per_unit": {}
     }
   },
   "accessibility": {
@@ -82,7 +84,7 @@
       "one": "Đã áp dụng {{ count }} bộ lọc",
       "other": "Đã áp dụng {{ count }} bộ lọc"
     },
-    "account": "Tài khoản",
+    "account": "Mở danh sách thả xuống tài khoản",
     "cart": "Giỏ hàng",
     "cart_count": "Tổng mặt hàng trong giỏ hàng",
     "menu": "Menu",
@@ -94,7 +96,12 @@
     "discount_applied": "Đã áp dụng mã giảm giá: {{ code }}",
     "open_cart_drawer": "Mở ngăn giỏ hàng",
     "inventory_status": "Trạng thái hàng trong kho",
-    "pause_video": "Tạm dừng video"
+    "pause_video": "Tạm dừng video",
+    "find_country": "Tìm quốc gia",
+    "localization_region_and_language": "Mở bộ chọn khu vực và ngôn ngữ",
+    "open_search_modal": "Mở hộp tương tác tìm kiếm",
+    "decrease_quantity": "Giảm số lượng",
+    "increase_quantity": "Tăng số lượng"
   },
   "actions": {
     "add_to_cart": "Thêm vào giỏ hàng",
@@ -131,7 +138,9 @@
     "apply": "Áp dụng",
     "sign_in_options": "Các tùy chọn đăng nhập khác",
     "sign_up": "Đăng ký",
-    "open_image_in_full_screen": "Mở hình ảnh ở chế độ toàn màn hình"
+    "open_image_in_full_screen": "Mở hình ảnh ở chế độ toàn màn hình",
+    "sort": "Sắp xếp",
+    "show_all_options": "Hiển thị tất cả tùy chọn"
   },
   "content": {
     "reviews": "đánh giá",
@@ -148,6 +157,7 @@
     "seller_note": "Hướng dẫn đặc biệt",
     "cart_subtotal": "Tổng phụ",
     "discounts": "Giảm giá",
+    "discount": "Giảm giá",
     "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Đã bao gồm thuế và thuế nhập khẩu. Ưu đãi giảm giá và <a href=\"{{ link }}\">phí vận chuyển<\/a> được tính khi thanh toán.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Đã bao gồm thuế và thuế nhập khẩu. Ưu đãi giảm giá và phí vận chuyển được tính khi thanh toán.",
     "taxes_included_shipping_at_checkout_with_policy_html": "Đã bao gồm thuế. Ưu đãi giảm giá và <a href=\"{{ link }}\">phí vận chuyển<\/a> được tính khi thanh toán.",
@@ -206,7 +216,7 @@
     "search_results_no_results_check_spelling": "Không tìm thấy kết quả cho \"{{ terms }}\". Hãy kiểm tra chính tả hoặc sử dụng một từ hoặc cụm từ khác.",
     "filters": "Bộ lọc",
     "no_products_found": "Không tìm thấy sản phẩm nào.",
-    "price_filter": "Giá cao nhất là {{ price }}",
+    "price_filter_html": "Giá cao nhất là {{ price }}",
     "use_fewer_filters_html": "Hãy thử sử dụng ít bộ lọc hơn hoặc <a class=\"{{ class }}\" href=\"{{ link }}\">xóa tất cả bộ lọc<\/a>.",
     "blog_details_separator": "|",
     "account_title": "Tài khoản",
@@ -238,7 +248,12 @@
     "inventory_low_stock_show_count": {
       "one": "Còn {{ count }}",
       "other": "Còn {{ count }}"
-    }
+    },
+    "powered_by": "Cửa hàng này sẽ được cung cấp bởi",
+    "store_owner_link_html": "Bạn có phải chủ cửa hàng không? <a href=\"{{ link }}\">Đăng nhập tại đây<\/a>",
+    "shipping_discount_error": "Ưu đãi giảm giá vận chuyển được hiển thị tại trang thanh toán sau khi thêm địa chỉ",
+    "discount_code_error": "Không thể áp dụng mã giảm giá cho giỏ hàng của bạn",
+    "shipping_policy": "Phí vận chuyển được tính khi thanh toán."
   },
   "gift_cards": {
     "issued": {

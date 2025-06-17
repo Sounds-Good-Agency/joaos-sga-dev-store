@@ -1,10 +1,16 @@
+{%- doc -%}
+  Renders the cart icon, which displays the number of items in the cart via a bubble.
+{%- enddoc -%}
 <cart-icon
   class="
     header-actions__cart-icon
     {% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}
   "
 >
-  <span class="svg-wrapper">
+  <span
+    class="svg-wrapper"
+    aria-hidden="true"
+  >
     {{ 'icon-cart.svg' | inline_asset_content }}
   </span>
 

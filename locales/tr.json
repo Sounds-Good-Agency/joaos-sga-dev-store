@@ -18,13 +18,11 @@
       "error_heading": "Lütfen aşağıdakileri düzenleyin:"
     },
     "unit_price": {
-      "per_item": {
-        "single": "Her biri {{price}}",
+      "per_item_html": {
         "one": "{{count}} ürün {{price}}",
         "other": "{{count}} ürün {{price}}"
       },
-      "per_unit": {
-        "single": "{{price}}\/{{unit}}",
+      "per_unit_html": {
         "one": "{{price}}\/{{count}}{{unit}}",
         "other": "{{price}}\/{{count}}{{unit}}"
       },
@@ -56,7 +54,11 @@
         "yd": "yd",
         "ft2": "ft²",
         "item": "ürün"
-      }
+      },
+      "per_item_single_html": "Her biri {{price}}",
+      "per_unit_single_html": "{{price}}\/{{unit}}",
+      "per_item": {},
+      "per_unit": {}
     }
   },
   "accessibility": {
@@ -78,7 +80,7 @@
     "search_results_count": "\"{{ query }}\" için {{ count }} arama sonucu bulundu",
     "search_results_no_results": "\"{{ query }}\" için sonuç bulunamadı",
     "filters": "Filtreler",
-    "account": "Hesap",
+    "account": "Hesap aç açılan menüsü",
     "cart": "Sepet",
     "cart_count": "Sepetteki toplam ürün sayısı",
     "filter_count": {
@@ -93,7 +95,13 @@
     "discount": "İndirim kodu uygula",
     "discount_applied": "Uygulanan indirim kodu: {{ code }}",
     "open_cart_drawer": "Sepet çekmecesini aç",
-    "pause_video": "Videoyu duraklat"
+    "pause_video": "Videoyu duraklat",
+    "inventory_status": "Envanter durumu",
+    "find_country": "Ülke bul",
+    "localization_region_and_language": "Bölge ve dil seçiciyi aç",
+    "open_search_modal": "Arama modunu aç",
+    "decrease_quantity": "Miktarı azalt",
+    "increase_quantity": "Miktarı artır"
   },
   "actions": {
     "add_to_cart": "Sepete ekle",
@@ -120,7 +128,7 @@
     "zoom": "Yakınlaştırma",
     "close_dialog": "İletişim kutusunu kapat",
     "back": "Geri",
-    "log_in": "Oturum aç",
+    "log_in": "Giriş yapın",
     "log_out": "Oturumu kapat",
     "remove_discount": "{{ code }} indirimini kaldır",
     "enter_using_password": "Parola kullanarak girin",
@@ -128,7 +136,11 @@
     "enter_password": "Parolayı girin",
     "view_store_information": "Mağaza bilgilerini görüntüle",
     "apply": "Uygula",
-    "open_image_in_full_screen": "Görseli tam ekranda aç"
+    "open_image_in_full_screen": "Görseli tam ekranda aç",
+    "sign_in_options": "Diğer giriş yapma seçenekleri",
+    "sign_up": "Kaydol",
+    "sort": "Sırala",
+    "show_all_options": "Tüm seçenekleri göster"
   },
   "content": {
     "reviews": "değerlendirme",
@@ -145,6 +157,7 @@
     "seller_note": "Özel talimatlar",
     "cart_subtotal": "Alt toplam",
     "discounts": "İndirimler",
+    "discount": "İndirim",
     "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Vergiler ve gümrük vergileri dahil. Ödeme sayfasında hesaplanan indirimler ve <a href=\"{{ link }}\">kargo<\/a>.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Vergiler ve gümrük vergileri dahil. Ödeme sayfasında hesaplanan indirimler ve kargo.",
     "taxes_included_shipping_at_checkout_with_policy_html": "Vergiler dahil. Ödeme sayfasında hesaplanan indirimler ve <a href=\"{{ link }}\">kargo<\/a>.",
@@ -203,7 +216,7 @@
     "search_results_no_results_check_spelling": "\"{{ terms }}\" için sonuç bulunamadı. Yazım hatası olmadığını doğrulayın veya farklı bir kelime ya da ifade kullanın.",
     "filters": "Filtreler",
     "no_products_found": "Ürün bulunamadı.",
-    "price_filter": "En yüksek fiyat: {{ price }}",
+    "price_filter_html": "En yüksek fiyat: {{ price }}",
     "use_fewer_filters_html": "Daha az filtre kullanmayı veya <a class=\"{{ class }}\" href=\"{{ link }}\">tüm filtreleri kaldırmayı<\/a> deneyin.",
     "blog_details_separator": "|",
     "read_more": "Devamını oku...",
@@ -225,7 +238,22 @@
     "taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Vergiler dahil. Kargo, ödeme sayfasında hesaplanır.",
     "taxes_included_shipping_at_checkout_without_policy_without_discounts": "Vergiler dahil. Kargo, ödeme sayfasında hesaplanır.",
     "wrong_password": "Yanlış parola",
-    "view_more_details": "Daha fazla ayrıntı görüntüle"
+    "view_more_details": "Daha fazla ayrıntı görüntüle",
+    "powered_by": "Bu mağaza için destek sağlayan:",
+    "store_owner_link_html": "Mağaza sahibi misiniz? <a href=\"{{ link }}\">Buradan oturum açın<\/a>",
+    "shipping_discount_error": "Kargo indirimleri, adres eklendikten sonra ödeme sayfasında gösterilir",
+    "discount_code_error": "Sepetinize indirim kodu uygulanamıyor",
+    "inventory_low_stock": "Stok düzeyi düşük",
+    "inventory_in_stock": "Stokta",
+    "inventory_out_of_stock": "Stokta yok",
+    "page_placeholder_title": "Sayfa başlığı",
+    "page_placeholder_content": "İçeriğini görüntülemek istediğiniz sayfayı seçin.",
+    "placeholder_image": "Yer tutucu görseli",
+    "shipping_policy": "Kargo, ödeme sayfasında hesaplanır.",
+    "inventory_low_stock_show_count": {
+      "one": "{{ count }} kaldı",
+      "other": "{{ count }} kaldı"
+    }
   },
   "gift_cards": {
     "issued": {
@@ -243,14 +271,18 @@
   },
   "placeholders": {
     "password": "Parola",
-    "search": "Ara"
+    "search": "Ara",
+    "product_title": "Ürün başlığı",
+    "collection_title": "Koleksiyon başlığı"
   },
   "products": {
     "product": {
       "add_to_cart": "Sepete ekle",
       "added_to_cart": "Sepete eklendi",
       "adding_to_cart": "Ekleniyor...",
-      "add_to_cart_error": "Sepete eklenirken hata oluştu"
+      "add_to_cart_error": "Sepete eklenirken hata oluştu",
+      "sold_out": "Tükendi",
+      "unavailable": "Kullanılamıyor"
     }
   },
   "fields": {

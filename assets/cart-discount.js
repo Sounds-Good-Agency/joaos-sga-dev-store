@@ -111,7 +111,6 @@ class CartDiscount extends Component {
       document.dispatchEvent(new DiscountUpdateEvent(data, this.id));
       morphSection(this.dataset.sectionId, newHtml);
     } catch (error) {
-      // Something went wrong, should we retry?
     } finally {
       this.#activeFetch = null;
       cartPerformance.measureFromEvent('discount-update:user-action', event);
@@ -164,7 +163,6 @@ class CartDiscount extends Component {
       document.dispatchEvent(new DiscountUpdateEvent(data, this.id));
       morphSection(this.dataset.sectionId, data.sections[this.dataset.sectionId]);
     } catch (error) {
-      // Something went wrong, should we retry?
     } finally {
       this.#activeFetch = null;
     }

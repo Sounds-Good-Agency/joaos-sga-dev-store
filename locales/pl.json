@@ -18,15 +18,13 @@
       "error_heading": "Dostosuj następujące dane:"
     },
     "unit_price": {
-      "per_item": {
-        "single": "{{price}} za szt.",
+      "per_item_html": {
         "one": "{{price}} za {{count}} szt.",
         "other": "{{price}} za {{count}} szt.",
         "few": "{{price}} za {{count}} szt.",
         "many": "{{price}} za {{count}} szt."
       },
-      "per_unit": {
-        "single": "{{price}}\/{{unit}}",
+      "per_unit_html": {
         "one": "{{price}}\/{{count}} {{unit}}",
         "other": "{{price}}\/{{count}} {{unit}}",
         "few": "{{price}}\/{{count}} {{unit}}",
@@ -62,7 +60,11 @@
         "yd": "yd",
         "ft2": "ft²",
         "item": "szt."
-      }
+      },
+      "per_item_single_html": "{{price}} za szt.",
+      "per_unit_single_html": "{{price}}\/{{unit}}",
+      "per_item": {},
+      "per_unit": {}
     }
   },
   "accessibility": {
@@ -84,7 +86,7 @@
     "search_results_count": "Znaleziono wyniki wyszukiwania ({{ count }}) dla „{{ query }}”",
     "search_results_no_results": "Nie znaleziono wyników dla „{{ query }}”",
     "filters": "Filtry",
-    "account": "Konto",
+    "account": "Otwórz listę rozwijaną konta",
     "cart": "Koszyk",
     "cart_count": "Łączna liczba pozycji w koszyku",
     "filter_count": {
@@ -101,7 +103,13 @@
     "discount": "Zastosuj kod rabatowy",
     "discount_applied": "Zastosowany kod rabatowy: {{ code }}",
     "open_cart_drawer": "Otwórz szufladę koszyka",
-    "pause_video": "Zatrzymaj film"
+    "pause_video": "Zatrzymaj film",
+    "inventory_status": "Stan zapasów",
+    "find_country": "Znajdź kraj",
+    "localization_region_and_language": "Otwórz region i selektor języka",
+    "open_search_modal": "Otwórz okno modalne wyszukiwania",
+    "decrease_quantity": "Zmniejsz ilość",
+    "increase_quantity": "Zwiększ ilość"
   },
   "actions": {
     "add_to_cart": "Dodaj do koszyka",
@@ -138,7 +146,11 @@
     "enter_password": "Wpisz hasło",
     "view_store_information": "Wyświetl informacje o sklepie",
     "apply": "Zastosuj",
-    "open_image_in_full_screen": "Otwórz obraz w trybie pełnoekranowym"
+    "open_image_in_full_screen": "Otwórz obraz w trybie pełnoekranowym",
+    "sign_in_options": "Inne opcje logowania",
+    "sign_up": "Zarejestruj się",
+    "sort": "Sortuj",
+    "show_all_options": "Pokaż wszystkie opcje"
   },
   "content": {
     "reviews": "recenzje",
@@ -155,6 +167,7 @@
     "seller_note": "Specjalne instrukcje",
     "cart_subtotal": "Suma częściowa",
     "discounts": "Rabaty",
+    "discount": "Zniżka",
     "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Z wliczonymi cłami i podatkami. Obliczenie rabatów i <a href=\"{{ link }}\">wysyłki<\/a> przy realizacji zakupu.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Z wliczonymi cłami i podatkami. Obliczenie rabatów i wysyłki przy realizacji zakupu.",
     "taxes_included_shipping_at_checkout_with_policy_html": "Z wliczonymi podatkami. Obliczenie rabatów i <a href=\"{{ link }}\">wysyłki<\/a> przy realizacji zakupu.",
@@ -217,7 +230,7 @@
     "price_from": "Od {{ price }}",
     "filters": "Filtry",
     "no_products_found": "Nie znaleziono produktów.",
-    "price_filter": "Najwyższa cena to {{ price }}",
+    "price_filter_html": "Najwyższa cena to {{ price }}",
     "use_fewer_filters_html": "Spróbuj użyć mniej filtrów lub <a class=\"{{ class }}\" href=\"{{ link }}\">wyczyść wszystkie filtry<\/a>.",
     "blog_details_separator": "|",
     "account_title": "Konto",
@@ -239,7 +252,24 @@
     "taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Z wliczonymi podatkami. Koszt wysyłki jest obliczany przy realizacji zakupu.",
     "taxes_included_shipping_at_checkout_without_policy_without_discounts": "Z wliczonymi podatkami. Koszt wysyłki jest obliczany przy realizacji zakupu.",
     "wrong_password": "Hasło nieprawidłowe",
-    "view_more_details": "Wyświetl więcej szczegółów"
+    "view_more_details": "Wyświetl więcej szczegółów",
+    "powered_by": "Ten sklep będzie obsługiwany przez",
+    "store_owner_link_html": "Czy jesteś właścicielem sklepu? <a href=\"{{ link }}\">Zaloguj się tutaj<\/a>",
+    "shipping_discount_error": "Rabaty na wysyłkę są widoczne przy realizacji zakupu, gdy dodany zostanie adres",
+    "discount_code_error": "Nie można dodać kodu rabatowego do Twojego koszyka",
+    "inventory_low_stock": "Niski poziom zapasu",
+    "inventory_in_stock": "W magazynie",
+    "inventory_out_of_stock": "Zapas wyczerpany",
+    "page_placeholder_title": "Tytuł strony",
+    "page_placeholder_content": "Wybierz stronę, aby wyświetlić jej zawartość.",
+    "placeholder_image": "Obraz symbolu zastępczego",
+    "shipping_policy": "Koszt wysyłki obliczany przy realizacji zakupu.",
+    "inventory_low_stock_show_count": {
+      "one": "Pozostało: {{ count }}",
+      "other": "Pozostało: {{ count }}",
+      "few": "Pozostało: {{ count }}",
+      "many": "Pozostało: {{ count }}"
+    }
   },
   "gift_cards": {
     "issued": {
@@ -260,12 +290,16 @@
       "add_to_cart": "Dodaj do koszyka",
       "adding_to_cart": "Trwa dodawanie...",
       "added_to_cart": "Dodano do koszyka",
-      "add_to_cart_error": "Błąd podczas dodawania do koszyka"
+      "add_to_cart_error": "Błąd podczas dodawania do koszyka",
+      "sold_out": "Wyprzedane",
+      "unavailable": "Niedostępny"
     }
   },
   "placeholders": {
     "password": "Hasło",
-    "search": "Szukaj"
+    "search": "Szukaj",
+    "product_title": "Tytuł produktu",
+    "collection_title": "Tytuł kolekcji"
   },
   "fields": {
     "separator": "do"

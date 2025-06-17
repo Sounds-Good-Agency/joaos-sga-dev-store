@@ -18,13 +18,11 @@
       "error_heading": "Pas het volgende aan:"
     },
     "unit_price": {
-      "per_item": {
-        "single": "{{price}} per stuk",
+      "per_item_html": {
         "one": "{{price}} per {{count}} artikel",
         "other": "{{price}} per {{count}} artikelen"
       },
-      "per_unit": {
-        "single": "{{price}}\/{{unit}}",
+      "per_unit_html": {
         "one": "{{price}}\/{{count}}{{unit}}",
         "other": "{{price}}\/{{count}}{{unit}}"
       },
@@ -56,7 +54,11 @@
         "yd": "yd",
         "ft2": "ft²",
         "item": "artikel"
-      }
+      },
+      "per_item_single_html": "{{price}} per stuk",
+      "per_unit_single_html": "{{price}}\/{{unit}}",
+      "per_item": {},
+      "per_unit": {}
     }
   },
   "accessibility": {
@@ -82,7 +84,7 @@
       "one": "{{ count }} filter toegepast",
       "other": "{{ count }} filters toegepast"
     },
-    "account": "Account",
+    "account": "Accountkeuzelijst openen",
     "cart": "Winkelwagen",
     "cart_count": "Totaal aantal artikelen in winkelwagen",
     "menu": "Menu",
@@ -94,7 +96,12 @@
     "discount_applied": "Toegepaste kortingscode: {{ code }}",
     "open_cart_drawer": "Winkelwagenoptie openen",
     "inventory_status": "Voorraadstatus",
-    "pause_video": "Video pauzeren"
+    "pause_video": "Video pauzeren",
+    "find_country": "Land zoeken",
+    "localization_region_and_language": "Regio- en taalkiezer openen",
+    "open_search_modal": "Zoekvenster openen",
+    "decrease_quantity": "Hoeveelheid verminderen",
+    "increase_quantity": "Hoeveelheid verhogen"
   },
   "actions": {
     "add_to_cart": "Aan winkelwagen toevoegen",
@@ -131,7 +138,9 @@
     "apply": "Toepassen",
     "sign_in_options": "Andere inlogopties",
     "sign_up": "Aanmelden",
-    "open_image_in_full_screen": "Afbeelding openen in volledig scherm"
+    "open_image_in_full_screen": "Afbeelding openen in volledig scherm",
+    "sort": "Sorteren",
+    "show_all_options": "Alle opties tonen"
   },
   "content": {
     "reviews": "recensies",
@@ -148,6 +157,7 @@
     "seller_note": "Speciale instructies",
     "cart_subtotal": "Subtotaal",
     "discounts": "Kortingen",
+    "discount": "Korting",
     "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Douanerechten en belastingen inbegrepen. Kortingen en <a href=\"{{ link }}\">verzending<\/a> worden bij de checkout berekend.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Douanerechten en belastingen inbegrepen. Kortingen en verzending worden bij de checkout berekend.",
     "taxes_included_shipping_at_checkout_with_policy_html": "Belastingen inbegrepen. Kortingen en <a href=\"{{ link }}\">verzending<\/a> worden bij de checkout berekend.",
@@ -206,7 +216,7 @@
     "featured_products": "Uitgelichte producten",
     "filters": "Filters",
     "no_products_found": "Geen producten gevonden.",
-    "price_filter": "De hoogste prijs is {{ price }}",
+    "price_filter_html": "De hoogste prijs is {{ price }}",
     "use_fewer_filters_html": "Probeer minder filters te gebruiken of <a class=\"{{ class }}\" href=\"{{ link }}\">wis alle filters<\/a>.",
     "blog_details_separator": "|",
     "read_more": "Meer informatie...",
@@ -239,7 +249,11 @@
       "one": "{{ count }} over",
       "other": "{{ count }} over"
     },
-    "shipping_policy": "Verzendkosten worden berekend bij de checkout."
+    "shipping_policy": "Verzendkosten worden berekend bij de checkout.",
+    "shipping_discount_error": "Verzendkortingen worden bij de checkout getoond nadat het adres is ingevoerd",
+    "discount_code_error": "Kortingscode kan niet worden toegepast op je winkelwagen",
+    "powered_by": "Deze winkel wordt mogelijk gemaakt door",
+    "store_owner_link_html": "Ben jij de winkeleigenaar? <a href=\"{{ link }}\">Log hier in<\/a>"
   },
   "gift_cards": {
     "issued": {

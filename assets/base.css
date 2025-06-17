@@ -1,4 +1,3 @@
-/* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
 * {
   box-sizing: border-box;
 }
@@ -69,11 +68,32 @@ select {
 .predictive-search-results__card--product,
 .predictive-search-results__card {
   position: relative;
-  transition:
-    transform var(--hover-transition-duration) var(--hover-transition-timing),
+  transition: transform var(--hover-transition-duration) var(--hover-transition-timing),
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
   will-change: transform, box-shadow;
   z-index: var(--layer-flat);
+}
+
+.product-card__link {
+  position: absolute;
+  inset: 0;
+}
+
+.product-card__content {
+  position: relative;
+  pointer-events: none;
+}
+
+.product-card__content :is(a, button, input, label, select, .card-gallery) {
+  pointer-events: auto;
+}
+
+.product-card__content .card-gallery {
+  cursor: pointer;
+}
+
+.product-card__content slideshow-component {
+  --cursor: pointer;
 }
 
 .predictive-search-results__card .product-card,
@@ -167,6 +187,9 @@ select {
 dialog {
   background-color: var(--color-background);
   color: var(--color-foreground);
+
+  /* the ::backdrop inherits from the originating element, custom properties must be set on the dialog element */
+  --backdrop-color: var(--color-shadow);
 }
 
 p,
@@ -327,9 +350,9 @@ p:empty {
 }
 
 /* Section width full vs. page
-   NOTE(@mxstbr): The reason we use a grid to contain the section is to allow for the section to have a
+   The reason we use a grid to contain the section is to allow for the section to have a
    full-width background image even if the section content is constrained by the page width. Do not try
-   to rewrite this to max-width: --page-width; margin: 0 auto;, it doesn't work. (ask me how I know…) */
+   to rewrite this to max-width: --page-width; margin: 0 auto;, it doesn't work. */
 .section {
   --full-page-grid-central-column-width: min(
     var(--page-width) - var(--page-margin) * 2,
@@ -812,8 +835,7 @@ a {
   text-decoration-color: transparent;
   text-decoration-thickness: 0.075em;
   text-underline-offset: 0.125em;
-  transition:
-    text-decoration-color var(--animation-speed) var(--animation-easing),
+  transition: text-decoration-color var(--animation-speed) var(--animation-easing),
     color var(--animation-speed) var(--animation-easing);
 }
 
@@ -901,7 +923,7 @@ summary::-webkit-details-marker {
   height: fit-content;
 }
 
-.product-grid__link.product-grid__link {
+.product-grid__card.product-grid__card {
   display: flex;
   flex-flow: column nowrap;
   gap: var(--product-card-gap);
@@ -913,7 +935,7 @@ summary::-webkit-details-marker {
   overflow: hidden;
 }
 
-[product-grid-view='zoom-out'] .product-grid__link {
+[product-grid-view='zoom-out'] .product-grid__card {
   row-gap: var(--padding-xs);
 }
 
@@ -936,17 +958,17 @@ summary::-webkit-details-marker {
   }
 }
 
-.product-grid__link .group-block > * {
+.product-grid__card .group-block > * {
   @media screen and (width <= 749px) {
     flex-direction: column;
   }
 }
 
-ul[product-grid-view='zoom-out'] .product-grid__link > * {
+ul[product-grid-view='zoom-out'] .product-grid__card > * {
   display: none;
 }
 
-ul[product-grid-view='zoom-out'] .product-grid__link .card-gallery {
+ul[product-grid-view='zoom-out'] .product-grid__card .card-gallery {
   display: block;
 }
 
@@ -964,10 +986,6 @@ ul[product-grid-view='zoom-out'] .card-gallery > img {
   display: block;
 }
 
-/* Above is the easiest, but would potentially result in different column sizes (where product titles are long)
-   Below is more complex solution but ensures all columns are the same width. Still need to figure out how to handle
-   long product titles.
-*/
 [product-grid-view='zoom-out'] {
   --product-grid-columns-desktop: repeat(
     10,
@@ -1016,6 +1034,10 @@ ul[product-grid-view='zoom-out'] .card-gallery > img {
       .facets__pill-label {
         transition: none;
       }
+
+      .facets--vertical & {
+        view-transition-name: none;
+      }
     }
 
     .product-grid {
@@ -1046,8 +1068,7 @@ ul[product-grid-view='zoom-out'] .card-gallery > img {
 
 results-list[initialized] {
   .product-grid__item {
-    transition:
-      opacity var(--animation-speed) var(--animation-easing),
+    transition: opacity var(--animation-speed) var(--animation-easing),
       transform var(--animation-speed) var(--animation-easing);
 
     @starting-style {
@@ -1194,8 +1215,7 @@ button.shopify-payment-button__button--unbranded {
   font-size: var(--font-paragraph--size);
   line-height: var(--font-paragraph--line-height);
   margin-block: 0;
-  transition:
-    color var(--animation-speed) var(--animation-easing),
+  transition: color var(--animation-speed) var(--animation-easing),
     box-shadow var(--animation-speed) var(--animation-easing),
     background-color var(--animation-speed) var(--animation-easing);
   cursor: pointer;
@@ -1951,7 +1971,8 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 }
 
 @media screen and (width >= 750px) {
-  .sticky-content--desktop {
+  .sticky-content--desktop,
+  .sticky-content--desktop.full-height--desktop > .group-block {
     position: sticky;
     top: var(--sticky-header-offset, 0);
     z-index: var(--layer-flat);
@@ -1985,7 +2006,8 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 }
 
 @media screen and (width >= 750px) {
-  .card-gallery:is(:focus-within, :hover) .quick-add__button {
+  product-card:focus-within .quick-add__button,
+  .card-gallery:hover .quick-add__button {
     display: grid;
     will-change: margin, opacity;
     animation: elementSlideInTop var(--animation-speed) var(--animation-easing);
@@ -2158,7 +2180,6 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   }
 }
 
-/* I had to keep some of those mobile variables for now as they're used in some blocks like email-signup, slide, product-information */
 .layout-panel-flex {
   display: flex;
   gap: var(--gap);
@@ -2217,9 +2238,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   flex-grow: 1;
   text-align: left;
   border-radius: var(--style-border-radius-inputs);
-  transition:
-    box-shadow var(--animation-speed) ease,
-    background-color var(--animation-speed) ease;
+  transition: box-shadow var(--animation-speed) ease, background-color var(--animation-speed) ease;
   padding: var(--input-padding);
   box-shadow: var(--input-box-shadow);
   background-color: var(--color-input-background);
@@ -2255,9 +2274,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   margin-bottom: 0;
   pointer-events: none;
   position: absolute;
-  transition:
-    top var(--animation-speed) ease,
-    font-size var(--animation-speed) ease;
+  transition: top var(--animation-speed) ease, font-size var(--animation-speed) ease;
 }
 
 /* RTE styles */
@@ -3090,19 +3107,6 @@ slideshow-slides {
   }
 }
 
-.collection-list__carousel slideshow-slides,
-.resource-list__carousel slideshow-slides {
-  /* Add padding to prevent hover animations from being clipped in slideshow
-     15px accommodates:
-     - Scale effect (9px on each side from 1.03 scale)
-     - Lift effect (4px upward movement)
-     - Shadow (15px spread with -5px offset)
-     Using 16px for better alignment with our spacing scale */
-
-  margin-block: -16px;
-  padding-block: 16px;
-}
-
 slideshow-component[disabled='true'] slideshow-slides {
   overflow: hidden;
 }
@@ -3157,7 +3161,7 @@ slideshow-slide {
  * Card galleries preview the next or previous images on 'pointerenter', so we
  * try to kick load them beforehand (they are lazy loaded otherwise).
  */
-:is(.collection-list__carousel, .resource-list__carousel, .card-gallery)
+:is(.resource-list__carousel, .card-gallery)
   :is(
     slideshow-slide:has(+ slideshow-slide[aria-hidden='false']),
     slideshow-slide[aria-hidden='false'] + slideshow-slide
@@ -3543,6 +3547,31 @@ slideshow-controls:has(.slideshow-controls__dots) {
   }
 }
 
+.slideshow-controls__thumbnail {
+  position: relative;
+}
+
+.slideshow-controls__thumbnail-badge {
+  position: absolute;
+  top: var(--padding-2xs);
+  right: var(--padding-2xs);
+  width: clamp(16px, 10%, 20px);
+  height: clamp(16px, 10%, 20px);
+  background-color: var(--color-background);
+  border-radius: var(--style-border-radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(from var(--color-foreground) r g b / 5%);
+}
+
+.slideshow-controls__thumbnail-badge svg {
+  width: 60%;
+  height: 60%;
+  fill: var(--color-foreground);
+  opacity: 0.6;
+}
+
 /* Slideshow Play/Pause */
 .slideshow-control:is(.icon-pause, .icon-play) {
   color: var(--color-active);
@@ -3580,7 +3609,7 @@ slideshow-arrows {
   position: absolute;
   inset: 0;
   display: flex;
-  z-index: var(--layer-flat);
+  z-index: var(--layer-heightened);
   pointer-events: none;
   mix-blend-mode: unset;
   align-items: flex-end;
@@ -3658,6 +3687,190 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   to {
     opacity: 1;
   }
+}
+
+.block-resource-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--gap);
+  min-width: 0;
+  min-height: 0;
+  container-type: inline-size;
+  container-name: resource-list;
+}
+
+.section-resource-list {
+  row-gap: var(--gap);
+}
+
+.section-resource-list__content {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--horizontal-alignment);
+  gap: var(--gap);
+  width: 100%;
+}
+
+.section-resource-list__content:empty {
+  display: none;
+}
+
+.section-resource-list__header:is(:empty, :has(.group-block-content:empty)),
+.section-resource-list__content:empty {
+  display: none;
+}
+
+.section-resource-list.section--full-width product-card-link > .group-block {
+  @media screen and (width < 750px) {
+    padding-inline: max(var(--padding-xs), var(--padding-inline-start))
+      max(var(--padding-xs), var(--padding-inline-end));
+  }
+}
+
+.resource-list--carousel-mobile {
+  display: block;
+
+  @media screen and (width >= 750px) {
+    display: none;
+  }
+}
+
+.resource-list {
+  --resource-list-mobile-gap-max: 9999px;
+  --resource-list-column-gap: min(var(--resource-list-column-gap-desktop), var(--resource-list-mobile-gap-max));
+  --resource-list-row-gap: min(var(--resource-list-row-gap-desktop), var(--resource-list-mobile-gap-max));
+
+  width: 100%;
+
+  @media screen and (width < 750px) {
+    --resource-list-mobile-gap-max: 12px;
+  }
+
+  @container resource-list (width < 750px) {
+    --resource-list-mobile-gap-max: 12px;
+  }
+}
+
+.resource-list--grid {
+  display: grid;
+  gap: var(--resource-list-row-gap) var(--resource-list-column-gap);
+  grid-template-columns: var(--resource-list-columns-mobile);
+
+  @media screen and (width >= 750px) {
+    grid-template-columns: var(--resource-list-columns);
+  }
+
+  @container resource-list (width < 450px) {
+    grid-template-columns: var(--resource-list-columns-mobile);
+  }
+
+  @container resource-list (width >= 450px) and (width < 750px) {
+    --resource-list-columns-per-row: 3;
+
+    grid-template-columns: repeat(var(--resource-list-columns-per-row), 1fr);
+
+    /* Avoid orphan in last row when there are 4, 7, or 10 items */
+    &:has(.resource-list__item:first-child:nth-last-child(3n + 1)),
+    /* Clean two full rows when there are 8 items */
+    &:has(.resource-list__item:first-child:nth-last-child(8n)) {
+      --resource-list-columns-per-row: 4;
+    }
+  }
+
+  @container resource-list (width >= 750px) {
+    grid-template-columns: repeat(var(--resource-list-columns-per-row), 1fr);
+
+    &:has(.resource-list__item:first-child:nth-last-child(n + 9)) {
+      --resource-list-columns-per-row: 5;
+    }
+
+    &:has(.resource-list__item:first-child:nth-last-child(n + 7):nth-last-child(-n + 8)) {
+      --resource-list-columns-per-row: 4;
+    }
+
+    &:has(.resource-list__item:first-child:nth-last-child(6)) {
+      --resource-list-columns-per-row: 3;
+    }
+
+    &:has(.resource-list__item:first-child:nth-last-child(5)) {
+      --resource-list-columns-per-row: 5;
+    }
+
+    &:has(.resource-list__item:first-child:nth-last-child(-n + 4)) {
+      --resource-list-columns-per-row: 4;
+    }
+  }
+
+  @container resource-list (width >= 1200px) {
+    &:has(.resource-list__item:first-child:nth-last-child(6)) {
+      --resource-list-columns-per-row: 6;
+    }
+  }
+}
+
+.resource-list__item {
+  height: 100%;
+  color: var(--color-foreground);
+  text-decoration: none;
+}
+
+.resource-list__carousel {
+  width: 100%;
+  position: relative;
+  container-type: inline-size;
+  container-name: resource-list-carousel;
+
+  --slide-width: 60vw;
+
+  .slideshow-control[disabled] {
+    display: none;
+  }
+
+  .slideshow-control--next {
+    margin-inline-start: auto;
+  }
+}
+
+@container resource-list-carousel (width < 750px) {
+  .resource-list__carousel .resource-list__slide {
+    --slide-width: clamp(150px, 60cqw, var(--slide-width-max));
+  }
+}
+
+@container resource-list-carousel (width >= 750px) {
+  .resource-list__carousel .resource-list__slide {
+    --section-slide-width: calc(
+      (100% - (var(--resource-list-column-gap) * (var(--column-count) - 1)) - var(--peek-next-slide-size)) /
+        var(--column-count)
+    );
+    --fallback-slide-width: clamp(150px, 60cqw, var(--slide-width-max));
+    --slide-width: var(--section-slide-width, var(--fallback-slide-width));
+  }
+}
+
+.resource-list__carousel slideshow-slides {
+  gap: var(--resource-list-column-gap);
+
+  /* Add padding to prevent hover animations from being clipped in slideshow
+     15px accommodates:
+     - Scale effect (9px on each side from 1.03 scale)
+     - Lift effect (4px upward movement)
+     - Shadow (15px spread with -5px offset)
+     Using 16px for better alignment with our spacing scale */
+
+  margin-block: -16px;
+  padding-block: 16px;
+}
+
+.resource-list__carousel slideshow-arrows {
+  padding-inline: var(--util-page-margin-offset);
+}
+
+.resource-list__carousel .resource-list__slide {
+  width: var(--slide-width);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-width: 0;
 }
 
 /* Base styles */
@@ -3749,8 +3962,7 @@ accordion-custom {
       overflow-y: clip;
       opacity: 0;
       interpolate-size: allow-keywords;
-      transition:
-        content-visibility var(--animation-speed-slow) allow-discrete,
+      transition: content-visibility var(--animation-speed-slow) allow-discrete,
         padding-block var(--animation-speed-slow) var(--animation-easing),
         opacity var(--animation-speed-slow) var(--animation-easing),
         block-size var(--animation-speed-slow) var(--animation-easing);
@@ -3888,7 +4100,7 @@ text-component {
 }
 
 /* Product card title truncation - applied only to zoom-out view */
-[product-grid-view='zoom-out'] :is(.product-card, .product-grid__link) :is(h4, .h4) {
+[product-grid-view='zoom-out'] :is(.product-card, .product-grid__card) :is(h4, .h4) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -3898,7 +4110,7 @@ text-component {
 
 /* Product card title truncation - applied on mobile regardless of view */
 @media screen and (width < 750px) {
-  :is(.product-card, .product-grid__link) :is(h4, .h4) {
+  :is(.product-card, .product-grid__card) :is(h4, .h4) {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -3920,8 +4132,7 @@ text-component {
 .predictive-search-results__card:hover {
   position: relative;
   z-index: var(--layer-raised);
-  transition:
-    transform var(--hover-transition-duration) var(--hover-transition-timing),
+  transition: transform var(--hover-transition-duration) var(--hover-transition-timing),
     box-shadow var(--hover-transition-duration) var(--hover-transition-timing);
 }
 

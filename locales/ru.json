@@ -18,19 +18,17 @@
       "error_heading": "Измените следующие элементы:"
     },
     "unit_price": {
-      "per_item": {
-        "single": "{{price}} за шт.",
+      "per_item_html": {
         "one": "{{price}} за {{count}} ед. товара",
         "other": "{{price}} за {{count}} ед. товара",
         "few": "{{price}} за {{count}} ед. товара",
         "many": "{{price}} за {{count}} ед. товара"
       },
-      "per_unit": {
-        "single": "{{price}}\/{{unit}}",
-        "one": "{{price}}\/{{count}}{{unit}}",
-        "other": "{{price}}\/{{count}}{{unit}}",
-        "few": "{{price}}\/{{count}}{{unit}}",
-        "many": "{{price}}\/{{count}}{{unit}}"
+      "per_unit_html": {
+        "one": "{{price}}\/{{count}} {{unit}}",
+        "other": "{{price}}\/{{count}} {{unit}}",
+        "few": "{{price}}\/{{count}} {{unit}}",
+        "many": "{{price}}\/{{count}} {{unit}}"
       },
       "per_unit_accessibility": {
         "single": "{{price}} за {{unit}}",
@@ -62,7 +60,11 @@
         "yd": "ярд.",
         "ft2": "кв. фут.",
         "item": "ед. товара"
-      }
+      },
+      "per_item_single_html": "{{price}} за шт.",
+      "per_unit_single_html": "{{price}}\/{{unit}}",
+      "per_item": {},
+      "per_unit": {}
     }
   },
   "accessibility": {
@@ -84,7 +86,7 @@
     "search_results_count": "Найдено {{ count }} результата(-ов) по запросу «{{ query }}»",
     "search_results_no_results": "По запросу «{{ query }}» ничего не найдено",
     "filters": "Фильтры",
-    "account": "Учетная запись",
+    "account": "Открыть раскрывающийся список счетов",
     "cart": "Корзина",
     "cart_count": "Всего товаров в корзине",
     "filter_count": {
@@ -102,7 +104,12 @@
     "discount_applied": "Примененный промокод : {{ code }}",
     "open_cart_drawer": "Открытый ящик тележки",
     "inventory_status": "Статус ассортимента",
-    "pause_video": "Приостановить видео"
+    "pause_video": "Приостановить видео",
+    "find_country": "Найти страну",
+    "localization_region_and_language": "Открыть выбор региона и языка",
+    "open_search_modal": "Открыть модальное окно поиска",
+    "decrease_quantity": "Уменьшить количество",
+    "increase_quantity": "Увеличить количество"
   },
   "actions": {
     "add_to_cart": "Добавить в корзину",
@@ -141,7 +148,9 @@
     "apply": "Применить",
     "sign_in_options": "Другие способы входа",
     "sign_up": "Регистрация",
-    "open_image_in_full_screen": "Открыть изображение во весь экран"
+    "open_image_in_full_screen": "Открыть изображение во весь экран",
+    "sort": "Сортировать",
+    "show_all_options": "Показать все варианты"
   },
   "content": {
     "reviews": "отз.",
@@ -158,6 +167,7 @@
     "seller_note": "Особые примечания",
     "cart_subtotal": "Промежуточный итог",
     "discounts": "Скидки",
+    "discount": "Скидка",
     "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Пошлины и налоги включены. Скидки и <a href=\"{{ link }}\">стоимость доставки<\/a> рассчитываются при оформлении заказа.",
     "duties_and_taxes_included_shipping_at_checkout_without_policy": "Пошлины и налоги включены. Скидки и стоимость доставки рассчитываются при оформлении заказа.",
     "taxes_included_shipping_at_checkout_with_policy_html": "Налоги включены. Скидки и <a href=\"{{ link }}\">стоимость доставки<\/a> рассчитываются при оформлении заказа.",
@@ -218,7 +228,7 @@
     "featured_products": "Рекомендуемые продукты",
     "filters": "Фильтры",
     "no_products_found": "Продукты не найдены.",
-    "price_filter": "Максимальная цена: {{ price }}",
+    "price_filter_html": "Максимальная цена: {{ price }}",
     "use_fewer_filters_html": "Попробуйте использовать меньше фильтров или <a class=\"{{ class }}\" href=\"{{ link }}\">сбросьте все фильтры<\/a>.",
     "search": "Поиск",
     "search_results_no_results_check_spelling": "По запросу «{{ terms }}» ничего не найдено. Проверьте правописание или выберите другие слова либо фразу.",
@@ -254,7 +264,12 @@
       "other": "Осталось: {{ count }}",
       "few": "Осталось: {{ count }}",
       "many": "Осталось: {{ count }}"
-    }
+    },
+    "powered_by": "Этот магазин работает на платформе",
+    "store_owner_link_html": "Вы владелец магазина? <a href=\"{{ link }}\">Войдите здесь<\/a>",
+    "shipping_discount_error": "Скидки на доставку отображаются при оформлении и оплате заказа после добавления адреса",
+    "discount_code_error": "Код скидки не может быть применен к вашей корзине",
+    "shipping_policy": "Стоимость доставки рассчитывается при оформлении заказа."
   },
   "gift_cards": {
     "issued": {
